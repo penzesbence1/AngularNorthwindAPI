@@ -1,0 +1,136 @@
+/* A konténer középre igazítása */
+.container {
+  max-width: 90%; /* A konténer maximális szélessége */
+  margin: 0 auto; /* Automatikus margó a középre igazításhoz */
+  display: flex;
+  justify-content: center; /* Középre igazítja a tartalmat vízszintesen */
+  align-items: flex-start; /* Az elemeket a tetejére igazítja */
+  flex-direction: column; /* A tartalmat függőleges irányban rendezi */
+}
+
+/* Táblázat és a gombok stílusa */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-left: auto; /* Középre igazítja a táblázatot */
+  margin-right: auto; /* Középre igazítja a táblázatot */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Finom árnyék */
+  border-radius: 10px; /* Kerekített sarkok */
+  overflow: hidden; /* A kerekített sarkoknál ne lógjon ki semmi */
+}
+
+  .table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px; /* A betűméret növelése */
+  }
+
+  .table th {
+    background-color: #f8f9fa; /* Világos háttér a fejlécnek */
+    color: #333; /* A fejléc szövege sötét */
+    font-weight: bold; /* A fejléc kiemelése */
+  }
+
+/* Kiemelt sor stílusa */
+.selected {
+  background-color: #e0f7fa; /* Kékes árnyalat */
+  color: #00796b;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out; /* Animált háttérszín */
+}
+
+/* Hover effektus a soroknál */
+.table tr:hover {
+  background-color: #f1f1f1; /* Hover szín a sorok alatt */
+  cursor: pointer;
+}
+
+/* Módosító űrlap */
+/* Az edit-form középre helyezése */
+.edit-form {
+  position: fixed; /* A pozíció fix, hogy a képernyő közepén maradjon görgetés közben */
+  top: 50%; /* A képernyő függőleges közepére igazítja */
+  left: 50%; /* A képernyő vízszintes közepére igazítja */
+  transform: translate(-50%, -50%); /* Az elem pontos közepére helyezése a top és left alapján */
+  background-color: #fff; /* Fehér háttér */
+  padding: 20px;
+  border-radius: 8px; /* Kerekített sarkok */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Finom árnyék */
+  max-width: 500px; /* Maximális szélesség */
+  width: 100%; /* A szélesség 100%-ra állítva */
+  z-index: 1000; /* Az elem biztosítja, hogy más elemek fölött jelenjen meg */
+}
+
+  .edit-form h3 {
+    margin-bottom: 20px;
+    color: #00796b; /* A cím színe */
+    font-size: 22px;
+  }
+
+  /* Form elemek */
+  .edit-form .form-group {
+    margin-bottom: 15px;
+  }
+
+  .edit-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .edit-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+    .edit-form input:focus {
+      outline: none;
+      border-color: #00796b; /* Fókusz szín */
+      box-shadow: 0 0 5px rgba(0, 128, 128, 0.2); /* Fókusz árnyék */
+    }
+
+/* Gombok stílusa */
+button {
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+  button:hover {
+    background-color: #004d40;
+  }
+
+  button.btn-secondary {
+    background-color: #736862;
+  }
+
+    button.btn-secondary:hover {
+      background-color: #999;
+    }
+
+/* Az egész sor kattinthatóvá tétele */
+.clickable-row {
+  cursor: pointer; /* Mutatja, hogy a sor kattintható */
+}
+
+/* A kiválasztott sor kiemelése */
+.selected {
+  background-color: #f0f8ff; /* Kiemelés színe, amit tetszőlegesen módosíthatsz */
+}
+
+/* Opcióként adhatunk hover effektust is */
+.clickable-row:hover {
+  background-color: #e0e0e0; /* A sor árnyékolása hover állapotban */
+}
+

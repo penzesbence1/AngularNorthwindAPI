@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="text-center">Territories List</h2>
+
+  <!-- Új territory gomb -->
+  <div class="text-center mb-4">
+    <button (click)="addNewTerritory()" class="btn btn-success">Új Territory hozzáadása</button>
+  </div>
+
+  <!-- Táblázat -->
+  <table class="table table-bordered table-striped table-hover table-center">
+    <thead>
+      <tr>
+        <th>Territory ID</th>
+        <th>Territory Description</th>
+        <th>Region ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let territory of territories" (click)="selectTerritory(territory)" [class.selected]="territory === selectedTerritory">
+        <td>{{ territory.territoryid }}</td>
+        <td>{{ territory.territorydescription }}</td>
+        <td>{{ territory.regionid }}</td>
+      </tr>
+      <tr *ngIf="territories.length === 0">
+        <td colspan="3" class="text-center">Nincsenek elérhető adatok.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Módosítási űrlap -->
+  <div *ngIf="selectedTerritory" class="edit-form" #editForm>
+    <h3 class="text-center">Módosítás: {{ selectedTerritory.territoryid }}</h3>
+    <form (ngSubmit)="updateTerritory()">
+      <div class="form-group">
+        <label for="territorydescription">Territory Description:</label>
+        <input type="text" id="territorydescription" class="form-control" [(ngModel)]="selectedTerritory.territorydescription" name="territorydescription" required />
+      </div>
+      <div class="form-group">
+        <label for="regionid">Region ID:</label>
+        <input type="text" id="regionid" class="form-control" [(ngModel)]="selectedTerritory.regionid" name="regionid" required />
+      </div>
+      <div class="form-actions text-center">
+        <button type="submit" class="btn btn-primary">Módosítás</button>
+        <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Mégse</button>
+      </div>
+    </form>
+  </div>
