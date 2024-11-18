@@ -2,9 +2,34 @@
   <h2 class="text-center">Territories List</h2>
 
   <!-- Új territory gomb -->
+
   <div class="text-center mb-4">
     <button (click)="addNewTerritory()" class="btn btn-success">Új Territory hozzáadása</button>
   </div>
+
+  <!-- Új territory űrlap -->
+  <div *ngIf="isAddingNew" class="edit-form">
+    <h3 class="text-center">Új Territory hozzáadása</h3>
+    <form (ngSubmit)="saveNewTerritory()">
+      <div class="form-group">
+        <label for="territoryid">Territory ID:</label>
+        <input type="text" id="territoryid" class="form-control" [(ngModel)]="newTerritory.territoryid" name="territoryid" required />
+      </div>
+      <div class="form-group">
+        <label for="territorydescription">Territory Description:</label>
+        <input type="text" id="territorydescription" class="form-control" [(ngModel)]="newTerritory.territorydescription" name="territorydescription" required />
+      </div>
+      <div class="form-group">
+        <label for="regionid">Region ID:</label>
+        <input type="text" id="regionid" class="form-control" [(ngModel)]="newTerritory.regionid" name="regionid" required />
+      </div>
+      <div class="form-actions text-center">
+        <button type="submit" class="btn btn-primary">Hozzáadás</button>
+        <button type="button" (click)="cancelAdd()" class="btn btn-secondary">Mégse</button>
+      </div>
+    </form>
+  </div>
+
 
   <!-- Táblázat -->
   <table class="table table-bordered table-striped table-hover table-center">
@@ -44,4 +69,7 @@
         <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Mégse</button>
       </div>
     </form>
-  </div>
+
+
+
+</div>

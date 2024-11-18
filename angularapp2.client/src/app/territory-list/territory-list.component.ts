@@ -11,7 +11,7 @@ export class TerritoryListComponent implements OnInit {
   territories: any[] = [];
   selectedTerritory: any = null;
   isAddingNew: boolean = false;  // Ha új territory hozzáadása folyamatban van
-  newTerritory: any = { territorydescription: '', regionid: '' }; // Az új territory adatainak tárolása
+  newTerritory: any = { territoryid: '', territorydescription: '', regionid: '' }; // Az új territory adatainak tárolása
 
   constructor(private territoryService: TerritoryService) { }
 
@@ -60,15 +60,40 @@ export class TerritoryListComponent implements OnInit {
 
   cancelAdd(): void {
     this.isAddingNew = false;  // Elrejti az új territory űrlapot
-    this.newTerritory = { territorydescription: '', regionid: '' }; // Törli az új territory adatait
+    this.newTerritory = { territoryid: '', territorydescription: '', regionid: '' }; // Törli az új territory adatait
   }
 
   addNewTerritory(): void {
     this.isAddingNew = true;  // Megjeleníti az új territory űrlapot
   }
 
+  saveNewTerritory(): void {
+    if (!this.newTerritory.territoryid || !this.newTerritory.territorydescription || !this.newTerritory.regionid) {
+      console.error('Minden mezőt ki kell tölteni!');
+      return;
+    }
+
+    this.territoryService.createTerritory(this.newTerritory).subscribe(
+      (response) => {
+        
+        this.loadTerritories(); // Frissíti a területek listáját
+        this.cancelAdd(); // Elrejti az új territory űrlapot
+      }
+    );
+
+  }
+
   sortTerritories(): void {
     this.territories.sort((a, b) => a.territoryid - b.territoryid);
+  }
+
+
+
+  createTerritory(): void {
+    if (!this.newTerritory.territoryid || !this.newTerritory.territorydescription || !this.newTerritory.regionid) {
+      console.error('Az összes mező kitöltése kötelező!');
+      return;
+    }
   }
 
 }

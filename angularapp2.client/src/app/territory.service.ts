@@ -19,4 +19,10 @@ export class TerritoryService {
   updateTerritory(territory: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${territory.territoryid}`, territory);
   }
+
+
+  createTerritory(territory: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, territory);
+  }
+
 }
