@@ -25,4 +25,11 @@ export class TerritoryService {
     return this.http.post<any>(this.apiUrl, territory);
   }
 
+
+  deleteTerritory(territoryid: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${territoryid}`);
+  }
+
+
+
 }

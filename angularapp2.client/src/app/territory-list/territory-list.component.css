@@ -134,3 +134,6 @@ button {
   background-color: #e0e0e0; /* A sor árnyékolása hover állapotban */
 }
 
+.btn-danger{
+    background-color: darkred;
+}

@@ -87,7 +87,18 @@ export class TerritoryListComponent implements OnInit {
     this.territories.sort((a, b) => a.territoryid - b.territoryid);
   }
 
+  deleteTerritory(): void {
+    if (!this.selectedTerritory) return;
 
+    this.territoryService.deleteTerritory(this.selectedTerritory.territoryid).subscribe(
+      (response) => {
+        
+        this.loadTerritories(); // Frissítjük a területek listáját
+        this.selectedTerritory = null; // Elrejtjük a módosító űrlapot
+      
+      }
+    );
+  }
 
   createTerritory(): void {
     if (!this.newTerritory.territoryid || !this.newTerritory.territorydescription || !this.newTerritory.regionid) {
