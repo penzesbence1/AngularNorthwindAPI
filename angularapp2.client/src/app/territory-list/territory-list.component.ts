@@ -68,15 +68,7 @@ export class TerritoryListComponent implements OnInit {
   }
 
   sortTerritories(): void {
-    this.territories.sort((a, b) => {
-      if (a.territoryid < b.territoryid) {
-        return -1;  // Ha a.territoryid kisebb, mint b.territoryid, akkor előre helyezi
-      } else if (a.territoryid > b.territoryid) {
-        return 1;   // Ha a.territoryid nagyobb, mint b.territoryid, akkor hátra helyezi
-      } else {
-        return 0;   // Ha egyenlő, nem változtat
-      }
-    });
+    this.territories.sort((a, b) => a.territoryid - b.territoryid);
   }
 
 }
